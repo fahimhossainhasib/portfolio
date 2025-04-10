@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #f0f0f0;
+    }
+  
+    .full-hero {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0;
+      margin: 0;
+      height: 50vh;
+      overflow: hidden;
+    }
+  
+    .hero-img-wrapper {
+      flex: 0 0 auto;
+    }
+  
+    .hero-img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 0 0 12px 0;
+      box-shadow: 4px 4px 30px rgba(255, 255, 255, 0.1);
+      display: block;
+    }
+  
+    .hero-content {
+      padding: 40px 60px;
+      max-width: 800px;
+    }
+  
+    .hero-content h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .hero-content p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+  
+    .hero-content a {
+      color: #00bcd4;
+      margin-right: 20px;
+      font-weight: 500;
+    }
+  
+    .hero-content a:hover {
+      text-decoration: underline;
+    }
+  
+    @media (max-width: 768px) {
+      .full-hero {
+        flex-direction: column;
+      }
+  
+      .hero-img {
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+      }
+  
+      .hero-content {
+        padding: 20px;
+        text-align: center;
+      }
+    }
+  </style>
+  
+  <section class="full-hero" data-aos="fade-up" data-aos-duration="800">
+    <div class="hero-img-wrapper">
+      <img src="{% static 'images/profile.jpg' %}" alt="Profile Photo" class="hero-img">
+    </div>
+  
+    <div class="hero-content">
+      <h1>Fahim Hossain</h1>
+      <p class="lead">AI Researcher | ML Developer | Portfolio & Blog</p>
+      <p>
+        I’m passionate about solving problems with machine learning and sharing what I learn along the way.
+      </p>
+      <div>
+        <a href="https://github.com/yourusername">GitHub</a>
+        <a href="https://linkedin.com/in/yourusername">LinkedIn</a>
+        <a href="/static/YourCV.pdf" target="_blank">CV</a>
+        <a href="https://scholar.google.com/citations?user=yourID">Scholar</a>
+      </div>
+    </div>
+  </section>
+  
+  <div class="container mt-5">
+      <h2 class="text-white mb-4">Blog Posts</h2>  
+      {% for post in blog_posts %}
+          <a href="{% url 'read_post' post.id %}" class="card-link" style = "text-decoration: none;">
+          <div class="recent-post-card d-flex flex-row text-white">
+              <div class="post-image-container">
+                  <img src="{{ post.images.url }}" class="post-thumbnail" alt="Post image">
+              </div>
+              <div class="card-body d-flex flex-column justify-content-center">
+                  <h5 class="card-title mb-1">{{ post.title }}</h5>
+                  <p class="card-text mb-0">
+                      <!--{{ post.published_at|date:"F d, Y" }} • {{ post.read_time }} min read-->
+                      {{ post.published_at|date:"F d, Y" }}
+                  </p>
+              </div>
+          </div>
+          </a>
+      {% empty %}
+          <p>No blog posts yet. Stay tuned!</p>    
+      {% endfor %}
+  </div>
+  {% endblock %}

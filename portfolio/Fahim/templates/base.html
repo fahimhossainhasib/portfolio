@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Site{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark px-4" style="background-color: #000000; border-bottom: 1px solid #ffffff;">
+        <a class="navbar-brand" href="/">Fahim Hossain</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/portfolio/">Portfolio</a></li>
+                <li class="nav-item"><a class="nav-link" href="/blog/">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container py-4">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+<footer>
+<div style="
+position: fixed;
+bottom: 0;
+width: 100%;
+background-color: #222;
+color: white;
+text-align: center;
+padding: 16px 0;
+font-size: 14px;
+z-index: 1000;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 16px;
+flex-wrap: wrap;
+margin-top: auto;
+">
+<a href="https://github.com/yourhandle" style="color: #fff; text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 4px;">
+    <svg style="height: 16px; width: 16px;" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2.05c-3.34.72-4.04-1.64-4.04-1.64-.55-1.4-1.34-1.77-1.34-1.77-1.1-.76.09-.75.09-.75 1.21.09 1.85 1.25 1.85 1.25 1.08 1.85 2.83 1.32 3.52 1 .1-.78.42-1.32.76-1.62-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.25-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.3 11.3 0 0 1 6 0C17 4.7 18 5.02 18 5.02c.66 1.66.24 2.88.12 3.18.78.84 1.25 1.91 1.25 3.22 0 4.61-2.81 5.63-5.48 5.93.43.38.81 1.11.81 2.23v3.3c0 .32.22.69.83.57A12 12 0 0 0 12 .5z"/>
+    </svg>
+    GitHub
+</a>
+<a href="https://linkedin.com/in/yourhandle" style="color: #0077b5; text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 4px;">
+    <svg style="height: 16px; width: 16px;" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M4.98 3.5c0 1.38-1.12 2.5-2.5 2.5S0 4.88 0 3.5 1.12 1 2.5 1s2.5 1.12 2.5 2.5zM.5 6h4.98v15H.5V6zm7.5 0h4.78v2.02h.07c.66-1.24 2.27-2.54 4.68-2.54C21.17 5.48 22 8 22 11.51V21h-4.99v-8.33c0-2-.03-4.58-2.8-4.58-2.81 0-3.24 2.2-3.24 4.44V21H8V6z"/>
+    </svg>
+    LinkedIn
+</a>
+<a href="https://www.buymeacoffee.com/yourusername" target="_blank" style="
+  margin-left: 20px;
+  background-color: #ffdd00;
+  color: #000;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+">
+  ☕ Buy Me a Coffee
+</a>
+</div>
+</footer>
+</html>
